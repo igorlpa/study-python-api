@@ -23,12 +23,8 @@ def detect_person():
     except:
         return {"error": "base64 format invalid"}, HTTPStatus.BAD_REQUEST  
 
-    print('processou imagem')
-    print(f'imagem {image_rgb.shape}')
     yolo_detector = Yolo(device='mps')
-    print('yolo')
     person_detections = yolo_detector.detect_person(image_rgb)
-    print(person_detections)
     json_data = []
     for detection in person_detections:
         data = {
